@@ -1,0 +1,30 @@
+html, body{
+    height: 100%;
+    max-height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.general-container{
+    background-image: url('../img/bg_image.jpg');
+    background-size: cover;
+    height: 100%;
+}
+
+.general-container h1 {
+  margin-top: 5%;
+}
+
+.general-container form{
+    margin-top: 3%;
+}
+
+.general-container form label{
+    font-weight: 300;
+    color: white;
+}
+
+.title{
+    text-align: center;
+    color: white;
+    font-weight: 200;
+}
