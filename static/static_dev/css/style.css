@@ -9,8 +9,8 @@ html, body{
   margin-bottom: 0;
 }
 
-.navbar-main {
-  background-color: #55e073;
+.navbar-static-top {
+  background-color: #edeef0;
   border: none;
   border-radius: 0;
 }
@@ -26,9 +26,9 @@ html, body{
 
 .footer {
   position: relative;
-  margin-bottom: -180px;
+  margin-bottom: -60px;
   background-color: white;
-  height: 180px;
+  height: 60px;
   clear: both;
 }
 
@@ -41,7 +41,7 @@ html, body{
 }
 
 .product-item {
-  height: 500px;
+  height: 52rem;
   background-color: white;
   border: 1px solid lightgray;
   position: relative;
