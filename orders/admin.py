@@ -33,3 +33,12 @@ class ProductInOrderAdmin(admin.ModelAdmin):
         model = ProductInOrder
 
 admin.site.register(ProductInOrder, ProductInOrderAdmin)
+
+
+class ProductInBasketAdmin(admin.ModelAdmin):
+    list_display = ['order', 'product', 'nmb', 'price_per_item', 'total_price', 'is_active', 'created', 'updated']
+
+    class Meta:
+        model = ProductInBasket
+
+admin.site.register(ProductInBasket, ProductInBasketAdmin)
