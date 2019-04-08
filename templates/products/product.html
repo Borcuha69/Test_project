@@ -5,9 +5,11 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                {% for image_item in product.productimage_set.all %}
-                    <img src="{{ image_item.image.url }}" class="img-responsive" alt="{{ image_item.product.name }}">
-                {% endfor %}
+                <div class="fotorama" data-nav="thumbs" data-allowfullscreen="true">
+                    {% for image_item in product.productimage_set.all %}
+                        <img src="{{ image_item.image.url }}" class="img-responsive" alt="{{ image_item.product.name }}">
+                    {% endfor %}
+                </div>
             </div>
             <div class="col-sm-6">
                 <h1 class="text-center">

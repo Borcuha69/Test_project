@@ -27,15 +27,17 @@ $(document).ready(function () {
                 console.log(data.products_total_nmb);
                 if (data.products_total_nmb){
                     $('#basket_total_nmb').text('('+data.products_total_nmb+')');
+                    $('.basket-items ul').html("");
+                    $.each(data.products, function (k, v) {
+                        $('.basket-items ul').append('<li>'+v.name+' '+v.nmb+'шт. '+v.price_per_item+' рублей ' +
+                            '<a class="delete-item" href="">x</a></li>');
+                    });
                 }
             },
             error: function () {
                 console.log("error");
             }
         });
-
-        $('.basket-items ul').append('<li>'+product_name+' '+nmb+'шт. '+order_price+' рублей ' +
-            '<a class="delete-item" href="">x</a></li>');
     });
 
     function shovingBasket(){
