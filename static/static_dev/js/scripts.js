@@ -15,7 +15,6 @@ $(document).ready(function () {
         var csrf_token = $('#form_buying_product [name="csrfmiddlewaretoken"]').val();
         data["csrfmiddlewaretoken"] = csrf_token;
         var url = form.attr("action");
-        console.log(data);
 
         $.ajax({
             url: url,
@@ -24,13 +23,11 @@ $(document).ready(function () {
             cache: true,
             success: function (data) {
                 console.log("OK");
-                console.log(data.products_total_nmb);
                 if (data.products_total_nmb){
                     $('#basket_total_nmb').text('('+data.products_total_nmb+')');
                     $('.basket-items ul').html("");
                     $.each(data.products, function (k, v) {
-                        $('.basket-items ul').append('<li>'+v.name+' '+v.nmb+'шт. '+v.price_per_item+' рублей ' +
-                            '<a class="delete-item" href="">x</a></li>');
+                        $('.basket-items ul').append('<li>'+v.name+' '+v.nmb+'шт. '+v.price_per_item+' рублей</li>');
                     });
                 }
             },
@@ -50,8 +47,22 @@ $(document).ready(function () {
     $('.basket-container').mouseout(function () {
         shovingBasket();
     });
-    $(document).on('click', '.delete-item', function (e) {
-        e.preventDefault();
-        $(this).closest('li').remove();
+    
+    function calculatingBasketPrice() {
+        var total_order_price = 0;
+        $('.product_in_basket_total_price').each(function () {
+            total_order_price += parseFloat($(this).text());
+        });
+        $('.total_order_price').text(total_order_price.toFixed(2));
+    };
+
+    $(document).on('change', ".product_in_basket_nmb", function () {
+        var current_nmb = $(this).val();
+        var current_tr = $(this).closest('tr');
+        var current_price_per_item = parseFloat(current_tr.find('.product_in_basket_price_per_item').text()).toFixed(2);
+        var current_total_price = parseFloat(current_nmb * current_price_per_item).toFixed(2);
+        current_tr.find('.product_in_basket_total_price').text(current_total_price);
+        calculatingBasketPrice();
     });
+    calculatingBasketPrice();
 });
